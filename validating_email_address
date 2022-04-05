@@ -1,22 +1,30 @@
+# function to check the conditions
+
 def fun(s):
+# using try_except method 
     try:
         username, url = s.split('@')
         website, extension = url.split('.')
     except ValueError:
         return False
 
-    if username.replace('-', '').replace('_', '').isalnum() is False:
+# checking if the mail_address follows the condition
+
+    if username.replace('-', '').replace('_', '').isalnum() is False:       #The username can only contain letters, digits, dashes and underscores
         return False
-    elif website.isalnum() is False:
+    elif website.isalnum() is False:       #The website name can only have letters and digits 
         return False
-    elif len(extension) > 3:
+    elif len(extension) > 3:           #The maximum length of the extension is 3
         return False
     else:
         return True
-    
+
+# function to return the email_address to meet the condition
+
 def filter_mail(emails):
     return list(filter(fun, emails))
 
+# driver code
 if __name__ == '__main__':
     n = int(input())
     emails = []
